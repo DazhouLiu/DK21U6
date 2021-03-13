@@ -1,9 +1,7 @@
-/*
- * vector.h
- *
- *  Created on: 
- *      Author: 
- */
+/*vector.h
+* Created on: 
+* Author: 
+*/
 
 #ifndef VECTOR_H_
 #define VECTOR_H_
@@ -16,82 +14,76 @@ namespace ubcse{
 	class vector{
 	private:
 
-		/* 
-		 *	*********************************************************
-		 *	Data fields 
-		 *
-		 */
+/*Data fields*/
 
-		/* Initial capacity of the array */
-		static const int INITIAL_CAPACITY;
+	/* Initial capacity of the array */
+	static const int INITIAL_CAPACITY;
 
-		/* The current capacity of the array */
-		int current_capacity;
+	/* The current capacity of the array */
+	int current_capacity;
 
-		/** The current number of items in the array */
-		int num_items;
+	/** The current number of items in the array */
+	int num_items;
 
-		/* The array to contain data .
-		 * we acquire it in the heap memory using new command
-		 */
-		T* data_array;	
+	/* The array to contain data .
+	* we acquire it in the heap memory using new command
+	*/
+	T* data_array;	
 
 
 	public: 
-		/*
-		 *	*********************************************************
-		 *	Constructors
-		 *
-		 */
+	/*
+	*	*********************************************************
+	*	Constructors
+	*
+	*/
 
 
-		/*
-		 *
-		 *	Default constructor:
-		 * 	It constructs an empty vector with default initial capacity.
-         * 	Set num_items to zero 
-         * 	Set current_capacity to INITIAL_CAPACITY
-         *	Allocate data_array of size "INITIAL_CAPACITY" in the Heap memory.	
-         *
-		 */
-		vector<T>(){ 
-			num_items = 0, 
-			current_capacity = INITIAL_CAPACITY, 
-			data_array = new T[INITIAL_CAPACITY];
-		}
+	/*
+	*
+	*	Default constructor:
+	* 	It constructs an empty vector with default initial capacity.
+        * 	Set num_items to zero 
+        * 	Set current_capacity to INITIAL_CAPACITY
+        *	Allocate data_array of size "INITIAL_CAPACITY" in the Heap memory.	
+        *
+	*/
+	vector<T>(){ 
+		num_items = 0, 
+		current_capacity = INITIAL_CAPACITY, 
+		data_array = new T[INITIAL_CAPACITY];
+	}
 
 
-		/*	
-		 *	
-		 *	TO DO: Step 2.1  (INSTRUCTIONS)
-		 *
-		 *	Implement Fill constructor Here. 
-		 *	This constructor has two arguments - 
-		 *		The first one is 'n' and it means number of items. 
-		 *		Second argument is a reference of type T named 'value'.
-		 *	You have to fill a vector with that 'n' number of 'value'.
-		 *	
-		 *	For example: vector<char> char_vector(5,'b'), will create a vector
-		 *	['b','b','b','b','b'].
-         *	Your current capacity must be at least INITIAL_CAPACITY. 
-         * 		Hint: explore and use reserve() function. 
-         *	
-		 */
-		vector<T>(const int n, const T &value){
-			// TO DO : put your code here (for fill constructor)
-			num_items = n;
-                        current_capacity = INITIAL_CAPACITY;
-			data_array = new T[current_capacity];
-				
-			for (size_t i = 0; i < current_capacity; i++) {
+	/*	
+	*	
+	*	TO DO: Step 2.1  (INSTRUCTIONS)
+	*
+	*	Implement Fill constructor Here. 
+	*	This constructor has two arguments - 
+	*		The first one is 'n' and it means number of items. 
+	*		Second argument is a reference of type T named 'value'.
+	*	You have to fill a vector with that 'n' number of 'value'.
+	*	
+	*	For example: vector<char> char_vector(5,'b'), will create a vector
+	*	['b','b','b','b','b'].
+        *	Your current capacity must be at least INITIAL_CAPACITY. 
+        * 		Hint: explore and use reserve() function. 
+        *	
+	*/
+	vector<T>(const int n, const T &value){
+		// TO DO : put your code here (for fill constructor)
+		num_items = n;
+                current_capacity = INITIAL_CAPACITY;
+		data_array = new T[current_capacity];
+		
+		for (size_t i = 0; i < current_capacity; i++) {
                                 data_array[i] = value;
                         }
-			
 			if (n > current_capacity) {
 				reserve(n);
 				for (size_t i = 0; i < n - INITIAL_CAPACITY; i++) {
 				data_array[i + INITIAL_CAPACITY] = value;
-
 				}
 			
 			} 
